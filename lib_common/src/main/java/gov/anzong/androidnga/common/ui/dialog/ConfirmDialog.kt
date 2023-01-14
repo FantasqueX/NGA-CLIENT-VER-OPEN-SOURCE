@@ -1,7 +1,6 @@
 package gov.anzong.androidnga.common.ui.dialog
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
@@ -12,7 +11,7 @@ class ConfirmDialog(private var mMessage: CharSequence, private var mActionRunna
     companion object {
         fun showConfirmDialog(activity: FragmentActivity, message: CharSequence, action: Runnable) {
             try {
-                ConfirmDialog(message, action).show(activity.supportFragmentManager, null);
+                ConfirmDialog(message, action).show(activity.supportFragmentManager, null)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -20,10 +19,10 @@ class ConfirmDialog(private var mMessage: CharSequence, private var mActionRunna
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = AlertDialog.Builder(context!!);
+        val builder = AlertDialog.Builder(this.requireContext())
         builder.setMessage(mMessage)
-                .setPositiveButton(android.R.string.ok) { dialog, which -> mActionRunnable.run() }
-                .setNegativeButton(android.R.string.cancel, null);
-        return builder.create();
+                .setPositiveButton(android.R.string.ok) { _, _ -> mActionRunnable.run() }
+                .setNegativeButton(android.R.string.cancel, null)
+        return builder.create()
     }
 }

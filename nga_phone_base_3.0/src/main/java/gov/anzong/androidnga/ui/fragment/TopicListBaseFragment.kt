@@ -24,9 +24,9 @@ import sp.phone.view.RecyclerViewEx
  */
 open class TopicListBaseFragment : BaseFragment(R.layout.fragment_topic_list_base), View.OnClickListener {
 
-    protected lateinit var mRefreshLayout: SwipeRefreshLayout;
+    protected lateinit var mRefreshLayout: SwipeRefreshLayout
 
-    protected lateinit var mListView: RecyclerViewEx;
+    protected lateinit var mListView: RecyclerViewEx
 
     protected var mRequestParam: TopicListParam? = null
 
@@ -36,13 +36,10 @@ open class TopicListBaseFragment : BaseFragment(R.layout.fragment_topic_list_bas
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mRequestParam = arguments!!.getParcelable(ParamKey.KEY_PARAM)
+        mRequestParam = this.requireArguments().getParcelable(ParamKey.KEY_PARAM)
         mPresenter = onCreatePresenter()
         lifecycle.addObserver(mPresenter)
-        initState()
-    }
 
-    private fun initState() {
         mPresenter.isRefreshing.observe(this, Observer {
             mRefreshLayout.isRefreshing = it
         })

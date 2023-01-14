@@ -17,7 +17,7 @@ open class BaseFragment : Fragment {
     constructor() : super()
 
     protected fun initToolbar() {
-        val toolbar: Toolbar? = view?.findViewById(R.id.toolbar);
+        val toolbar: Toolbar? = view?.findViewById(R.id.toolbar)
         if (toolbar != null && activity != null) {
             (activity as BaseActivity).setupToolbar(toolbar)
         }
@@ -28,7 +28,7 @@ open class BaseFragment : Fragment {
     }
 
     protected fun getActivityViewModelProvider(): ViewModelProvider {
-        return mActivityViewModelProvider;
+        return mActivityViewModelProvider
     }
 
     open fun onBackPressed() : Boolean {
