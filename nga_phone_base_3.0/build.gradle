@@ -1,6 +1,8 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+}
 
 def static getDate() {
     def date = new Date()
@@ -94,6 +96,10 @@ android {
     }
 }
 
+repositories {
+    flatDir { dirs 'libs' }
+}
+
 dependencies {
     implementation(name: 'floatingactionmenu', ext: 'aar')
 
@@ -144,8 +150,4 @@ dependencies {
 
     //noinspection KtxExtensionAvailable
     implementation "androidx.preference:preference:$preference_version"
-}
-
-repositories {
-    mavenCentral()
 }
