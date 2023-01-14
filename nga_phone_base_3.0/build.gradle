@@ -29,19 +29,19 @@ android {
             keyPassword '19910914'
         }
     }
-
     packagingOptions {
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/MANIFEST.MF'
+        resources {
+            excludes += ['META-INF/LICENSE.txt', 'META-INF/NOTICE.txt', 'META-INF/MANIFEST.MF']
+        }
     }
+
 
     defaultConfig {
         applicationId "gov.anzong.androidnga"
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         multiDexEnabled true
-        resConfigs "zh", "en"
+        resConfigs 'zh', 'en'
 
         versionCode project.appVersionCode
         versionName project.appVersionName
@@ -80,11 +80,12 @@ android {
     dexOptions {
         javaMaxHeapSize "2g"
     }
-
-    lintOptions {
+    lint {
         abortOnError false
         disable 'MissingTranslation'
     }
+    namespace 'gov.anzong.androidnga'
+
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {

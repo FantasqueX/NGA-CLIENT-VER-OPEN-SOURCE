@@ -14,7 +14,7 @@ import sp.phone.util.StringUtils
 /**
  * 提供了带ActionBar主题列表Fragment
  */
-class TopicListSimpleFragment() : TopicListBaseFragment() {
+class TopicListSimpleFragment : TopicListBaseFragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class TopicListSimpleFragment() : TopicListBaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_topic_list_simple, container, false);
+        return inflater.inflate(R.layout.fragment_topic_list_simple, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
