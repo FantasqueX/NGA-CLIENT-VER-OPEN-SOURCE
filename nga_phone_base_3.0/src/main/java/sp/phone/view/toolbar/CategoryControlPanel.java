@@ -1,8 +1,6 @@
 package sp.phone.view.toolbar;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
@@ -10,10 +8,13 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.util.List;
 
 import gov.anzong.androidnga.R;
-import gov.anzong.androidnga.http.OnHttpCallBack;
+import sp.phone.http.OnHttpCallBack;
 import sp.phone.mvp.contract.TopicPostContract.Presenter;
 
 public class CategoryControlPanel extends FrameLayout implements OnHttpCallBack<List<String>> {

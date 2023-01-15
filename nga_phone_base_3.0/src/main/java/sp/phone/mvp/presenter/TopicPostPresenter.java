@@ -18,20 +18,21 @@ import java.io.InputStream;
 import java.util.List;
 
 import gov.anzong.androidnga.R;
+import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.base.util.PermissionUtils;
 import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.common.util.EmoticonUtils;
-import gov.anzong.androidnga.base.util.ContextUtils;;
 import gov.anzong.androidnga.rxjava.BaseSubscriber;
-import sp.phone.param.PostParam;
-import sp.phone.ui.fragment.TopicPostFragment;
-import gov.anzong.androidnga.http.OnHttpCallBack;
+import sp.phone.http.OnHttpCallBack;
 import sp.phone.mvp.contract.TopicPostContract;
 import sp.phone.mvp.model.TopicPostModel;
+import sp.phone.param.PostParam;
 import sp.phone.task.TopicPostTask;
+import sp.phone.ui.fragment.TopicPostFragment;
 import sp.phone.util.ActivityUtils;
 import sp.phone.util.FunctionUtils;
 import sp.phone.util.StringUtils;
+
 
 public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPostModel>
         implements TopicPostContract.Presenter, TopicPostTask.CallBack {
@@ -140,7 +141,7 @@ public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPo
 
     @Override
     public void showFilePicker() {
-        PermissionUtils.request(mBaseView, new BaseSubscriber<Boolean>(){
+        PermissionUtils.request(mBaseView, new BaseSubscriber<Boolean>() {
 
             @Override
             public void onNext(Boolean aBoolean) {

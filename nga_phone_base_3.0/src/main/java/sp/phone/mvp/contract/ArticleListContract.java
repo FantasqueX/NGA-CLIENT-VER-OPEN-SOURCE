@@ -5,10 +5,10 @@ import android.os.Bundle;
 
 import java.util.Map;
 
+import sp.phone.http.OnHttpCallBack;
 import sp.phone.http.bean.ThreadData;
 import sp.phone.http.bean.ThreadRowInfo;
 import sp.phone.param.ArticleListParam;
-import gov.anzong.androidnga.http.OnHttpCallBack;
 
 /**
  *

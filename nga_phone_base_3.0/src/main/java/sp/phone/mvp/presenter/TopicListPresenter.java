@@ -33,7 +33,7 @@ import gov.anzong.androidnga.base.util.PermissionUtils;
 import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.common.util.FileUtils;
 import gov.anzong.androidnga.common.util.LogUtils;
-import gov.anzong.androidnga.http.OnHttpCallBack;
+import sp.phone.http.OnHttpCallBack;
 import sp.phone.mvp.model.BoardModel;
 import sp.phone.mvp.model.TopicListModel;
 import sp.phone.mvp.model.entity.Board;
