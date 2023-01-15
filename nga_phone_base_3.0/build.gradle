@@ -96,9 +96,7 @@ repositories {
 dependencies {
     implementation(name: 'floatingactionmenu', ext: 'aar')
 
-    implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "com.google.android.material:material:$androidxMaterial"
-    implementation "androidx.cardview:cardview:1.0.0"
 
     implementation 'commons-io:commons-io:2.11.0'
     implementation 'com.google.guava:guava:31.1-android'
