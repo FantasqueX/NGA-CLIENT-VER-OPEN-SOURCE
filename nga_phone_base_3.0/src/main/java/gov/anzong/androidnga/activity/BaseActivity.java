@@ -14,8 +14,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.justwen.androidnga.cloud.CloudServerManager;
-
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.base.common.SwipeBackHelper;
 import gov.anzong.androidnga.base.util.ContextUtils;
@@ -202,7 +200,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (PreferenceUtils.getData(PreferenceKey.KEY_CHECK_UPGRADE_STATE, true)) {
             long time = PreferenceUtils.getData(PreferenceKey.KEY_CHECK_UPGRADE_TIME, 0L);
             if (System.currentTimeMillis() - time > 1000 * 60 * 60 * 24) {
-                CloudServerManager.checkUpgrade();
                 PreferenceUtils.putData(PreferenceKey.KEY_CHECK_UPGRADE_TIME, System.currentTimeMillis());
             }
         }
