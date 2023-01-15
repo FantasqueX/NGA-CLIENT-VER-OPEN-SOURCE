@@ -1,6 +1,6 @@
 package gov.anzong.androidnga.activity;
 
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
@@ -40,7 +40,7 @@ public class LauncherSubActivity extends BaseActivity {
             } else {
                 Bundle bundle = getIntent().getExtras();
                 ((Fragment) fragment).setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(android.R.id.content, (Fragment) fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(android.R.id.content, (Fragment) fragment).commit();
             }
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();
