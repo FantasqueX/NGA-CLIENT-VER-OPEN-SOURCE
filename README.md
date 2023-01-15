@@ -1,14 +1,22 @@
-NGA-CLIENT-VER-OPEN-SOURCE
-==========================
+# NGA-CLIENT-VER-OPEN-SOURCE
 
-NGA客户端开源版代码仓库
+This is an open-source client for NGA BBS.
 
-可直接导入Android Studio。
+## Installation
 
-- - -
-更新内容去下面链接找
-- - -
-<https://play.google.com/store/apps/details?id=gov.anzong.androidnga><br>
-The APP in Google Play Based on our project!
+Install APK from the release page which is not available now. Or build APK by yourself. You can also find the old version on [Google Play](https://play.google.com/store/apps/details?id=gov.anzong.androidnga).
 
+## Development
 
+Android Studio Electric eel is recommended.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+[GPLv2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
