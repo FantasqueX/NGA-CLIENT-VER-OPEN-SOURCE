@@ -30,7 +30,7 @@ import sp.phone.view.RecyclerViewEx;
 
 public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.MessageViewHolder> implements RecyclerViewEx.IAppendableAdapter {
 
-    private List<MessageListInfo> mInfoList = new ArrayList<>();
+    private final List<MessageListInfo> mInfoList = new ArrayList<>();
 
     private boolean mPrompted;
 
@@ -38,7 +38,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
     private int mTotalCount;
 
-    private Context mContext;
+    private final Context mContext;
 
     private View.OnClickListener mClickListener;
 
@@ -82,7 +82,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         if (position + 1 == getItemCount()
                 && !hasNextPage()
                 && !mPrompted) {
-            ToastUtils.showShortToast(R.string.last_page_prompt_message);
+            ToastUtils.showToast(R.string.last_page_prompt_message);
             mPrompted = true;
         }
     }

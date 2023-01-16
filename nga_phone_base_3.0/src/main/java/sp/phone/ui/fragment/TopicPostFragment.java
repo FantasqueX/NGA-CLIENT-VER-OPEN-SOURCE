@@ -69,7 +69,7 @@ public class TopicPostFragment extends BaseMvpFragment<TopicPostPresenter> imple
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         mAnonyCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                ToastUtils.info("匿名发帖/回复每次将扣除一百铜币,慎重");
+                ToastUtils.showToast("匿名发帖/回复每次将扣除一百铜币,慎重");
             }
         });
         mToolbarContainer = view.findViewById(R.id.control_panel);

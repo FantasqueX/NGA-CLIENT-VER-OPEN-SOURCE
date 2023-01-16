@@ -44,7 +44,7 @@ open class TopicListBaseFragment : BaseFragment(R.layout.fragment_topic_list_bas
             mRefreshLayout.isRefreshing = it
         })
         mPresenter.errorMsg.observe(this, Observer {
-            ToastUtils.error(it)
+            ToastUtils.showToast(it)
         })
         mPresenter.firstTopicList.observe(this, Observer {
             if (it == null) {

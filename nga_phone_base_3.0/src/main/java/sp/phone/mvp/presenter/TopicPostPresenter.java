@@ -102,7 +102,7 @@ public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPo
             @Override
             public void onError(String text) {
                 if (mBaseView != null) {
-                    ActivityUtils.showToast(text);
+                    ToastUtils.showToast(text);
                 }
             }
 
@@ -127,7 +127,7 @@ public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPo
     @Override
     public void post(String title, String body, boolean isAnony) {
         if (mLoading) {
-            mBaseView.showToast(R.string.avoidWindfury);
+            ToastUtils.showToast(R.string.avoidWindfury);
             return;
         }
         mLoading = true;
@@ -161,7 +161,7 @@ public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPo
             public void onError(String text) {
                 if (mBaseView != null) {
                     mBaseView.hideUploadFileProgressBar();
-                    ToastUtils.error(text);
+                    ToastUtils.showToast(text);
                 }
             }
 
@@ -169,7 +169,7 @@ public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPo
             public void onSuccess(String data) {
                 if (mBaseView != null) {
                     mBaseView.hideUploadFileProgressBar();
-                    ToastUtils.success("上传成功");
+                    ToastUtils.showToast("上传成功");
                     finishUpload(data, uri);
                 }
             }
@@ -241,7 +241,7 @@ public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPo
         ActivityUtils.getInstance().dismiss();
         if (mBaseView != null) {
             if (!StringUtils.isEmpty(result)) {
-                mBaseView.showToast(result);
+                ToastUtils.showToast(result);
             }
             if (isSuccess) {
                 mBaseView.setResult(Activity.RESULT_OK);

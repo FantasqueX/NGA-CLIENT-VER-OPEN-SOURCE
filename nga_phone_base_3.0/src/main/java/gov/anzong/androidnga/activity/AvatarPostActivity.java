@@ -1,6 +1,5 @@
 package gov.anzong.androidnga.activity;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -96,33 +95,6 @@ public class AvatarPostActivity extends BaseActivity implements
         return null;
     }
 
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is ExternalStorageProvider.
-     */
-    public static boolean isExternalStorageDocument(Uri uri) {
-        return "com.android.externalstorage.documents".equals(uri
-                .getAuthority());
-    }
-
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is DownloadsProvider.
-     */
-    public static boolean isDownloadsDocument(Uri uri) {
-        return "com.android.providers.downloads.documents".equals(uri
-                .getAuthority());
-    }
-
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is MediaProvider.
-     */
-    public static boolean isMediaDocument(Uri uri) {
-        return "com.android.providers.media.documents".equals(uri
-                .getAuthority());
-    }
-
     /*
      * (non-Javadoc)
      *
@@ -171,7 +143,6 @@ public class AvatarPostActivity extends BaseActivity implements
 
         });
         submit_button.setOnClickListener(new OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
@@ -180,7 +151,6 @@ public class AvatarPostActivity extends BaseActivity implements
                 }
                 commitListener.onClick(null);
             }
-
         });
 
         getSupportActionBar().setTitle("更改头像");
@@ -222,7 +192,6 @@ public class AvatarPostActivity extends BaseActivity implements
         super.onResume();
     }
 
-    @TargetApi(11)
     private void RunParallel(AvatarFileUploadTask task) {
         task.executeOnExecutor(AvatarFileUploadTask.THREAD_POOL_EXECUTOR);
     }
@@ -246,13 +215,10 @@ public class AvatarPostActivity extends BaseActivity implements
             avatarImage.setVisibility(View.GONE);
             avatarpreview.setVisibility(View.GONE);
         }
-
     }
 
     @Override
     public void OnAvatarLoadStart(String url) {
-        // TODO Auto-generated method stub
-
         synchronized (lock) {
             this.urlSet.add(url);
         }
@@ -260,7 +226,6 @@ public class AvatarPostActivity extends BaseActivity implements
 
     @Override
     public void OnAvatarLoadComplete(String url, Bitmap result) {
-        // TODO Auto-generated method stub
         synchronized (lock) {
             this.urlSet.remove(url);
             if (result != null) {
@@ -445,7 +410,6 @@ public class AvatarPostActivity extends BaseActivity implements
             synchronized (commit_lock) {
                 loading = false;
             }
-
             super.onPostExecute(result);
         }
 

@@ -224,7 +224,7 @@ public class TopicPostModel extends BaseModel implements TopicPostContract.Model
                             if (object.containsKey("error_code")) {
                                 int errorCode = object.getInteger("error_code");
                                 if (errorCode == 9 && !compress) {
-                                    ToastUtils.showShortToast("附件过大，无法上传，重新进行压缩并上传");
+                                    ToastUtils.showToast("附件过大，无法上传，重新进行压缩并上传");
                                     uploadFile(uri, postParam, callBack, true);
                                     return;
                                 }
@@ -265,6 +265,4 @@ public class TopicPostModel extends BaseModel implements TopicPostContract.Model
                 .addFormDataPart("origin_domain", "bbs.ngacn.cc");
         return builder.build();
     }
-
-
 }

@@ -385,10 +385,10 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
         UserManager um = UserManagerImpl.getInstance();
         if (um.checkBlackList(mProfileData.getUid())) {
             um.removeFromBlackList(mProfileData.getUid());
-            ToastUtils.success(R.string.remove_from_blacklist_success);
+            ToastUtils.showToast(R.string.remove_from_blacklist_success);
         } else {
             um.addToBlackList(mProfileData.getUserName(), mProfileData.getUid());
-            ToastUtils.success(R.string.add_to_blacklist_success);
+            ToastUtils.showToast(R.string.add_to_blacklist_success);
         }
     }
 
@@ -438,6 +438,7 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
             mSignWebView.requestLayout();
             //  handleAvatar(avatarImage, mProfileData);
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void handleSignWebView(WebViewEx contentTV, ProfileData ret) {
@@ -559,7 +560,7 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
 
     @Override
     public void onError(String text) {
-        ActivityUtils.showToast(text);
+        ToastUtils.showToast(text);
     }
 
     @Override

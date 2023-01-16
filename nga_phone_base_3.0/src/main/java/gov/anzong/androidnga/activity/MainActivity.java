@@ -168,6 +168,7 @@ public class MainActivity extends BaseActivity {
         } else {
             mBoardFragment.onActivityResult(requestCode, resultCode, data);
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void startNotificationActivity() {

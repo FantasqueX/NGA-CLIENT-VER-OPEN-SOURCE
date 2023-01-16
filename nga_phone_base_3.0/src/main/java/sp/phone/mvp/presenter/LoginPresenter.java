@@ -6,13 +6,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 import gov.anzong.androidnga.R;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.common.UserManagerImpl;
 import sp.phone.http.OnHttpCallBack;
 import sp.phone.mvp.contract.LoginContract;
 import sp.phone.mvp.model.LoginModel;
 import sp.phone.param.LoginParam;
 import sp.phone.ui.fragment.LoginFragment;
-import sp.phone.util.ActivityUtils;
 import sp.phone.util.StringUtils;
 
 /**
@@ -39,7 +39,7 @@ public class LoginPresenter extends BasePresenter<LoginFragment, LoginModel> imp
         mBaseModel.loadAuthCode(new OnHttpCallBack<LoginParam>() {
             @Override
             public void onError(String text) {
-                ActivityUtils.showToast("载入验证码失败");
+                ToastUtils.showToast("载入验证码失败");
             }
 
             @Override
@@ -53,7 +53,7 @@ public class LoginPresenter extends BasePresenter<LoginFragment, LoginModel> imp
     @Override
     public void login(String userName, String password, String authCode) {
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(authCode)) {
-            ActivityUtils.showToast("内容缺少，请检查后再试");
+            ToastUtils.showToast("内容缺少，请检查后再试");
             return;
         }
 
@@ -64,7 +64,7 @@ public class LoginPresenter extends BasePresenter<LoginFragment, LoginModel> imp
         mBaseModel.login(mLoginParam, new OnHttpCallBack<String>() {
             @Override
             public void onError(String text) {
-                ActivityUtils.showToast(text);
+                ToastUtils.showToast(text);
                 loadAuthCode();
             }
 
@@ -113,7 +113,7 @@ public class LoginPresenter extends BasePresenter<LoginFragment, LoginModel> imp
     private void saveCookie(String uid, String cid, String userName) {
         UserManagerImpl.getInstance().addUser(uid, cid, userName);
         if (mBaseView != null) {
-            mBaseView.showToast(R.string.login_successfully);
+            ToastUtils.showToast(R.string.login_successfully);
             mBaseView.setResult(true);
         }
 

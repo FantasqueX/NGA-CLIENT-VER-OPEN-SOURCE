@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gov.anzong.androidnga.R;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.common.PreferenceKey;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.http.OnHttpCallBack;
@@ -121,7 +122,7 @@ public class RecentNotificationFragment extends BaseRxFragment implements OnHttp
     public void onError(String text) {
         setRefreshing(false);
         mEmptyLayout.setEmptyText(text);
-        showToast(text);
+        ToastUtils.showToast(text);
     }
 
     private void setRefreshing(boolean refreshing) {
@@ -135,7 +136,7 @@ public class RecentNotificationFragment extends BaseRxFragment implements OnHttp
     @Override
     public void onSuccess(List<RecentReplyInfo> data) {
         if (data.isEmpty()) {
-            showToast("没有最近被喷内容");
+            ToastUtils.showToast("没有最近被喷内容");
             mEmptyLayout.setEmptyText("没有最近被喷内容");
             setRefreshing(false);
         } else {

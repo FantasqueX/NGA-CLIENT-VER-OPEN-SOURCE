@@ -42,7 +42,7 @@ public class ArticleCacheActivity extends BaseActivity {
 
     private void initViews() {
         if (mCachePageList.isEmpty()) {
-            ToastUtils.error("加载失败!");
+            ToastUtils.showToast("加载失败!");
             return;
         }
 

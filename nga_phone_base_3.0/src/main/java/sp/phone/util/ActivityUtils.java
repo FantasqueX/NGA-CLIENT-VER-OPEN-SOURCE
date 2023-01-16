@@ -15,8 +15,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.LauncherSubActivity;
-import gov.anzong.androidnga.base.util.ContextUtils;
-import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.UserManagerImpl;
 import sp.phone.ui.fragment.TopicHistoryFragment;
@@ -43,33 +41,11 @@ public class ActivityUtils {
     private ActivityUtils() {
     }
 
-    public static void showToast(Context context, int resId) {
-        if (context != null) {
-            ToastUtils.showToast(resId);
-        }
-    }
-
-    public static void showToast(Context context, String res) {
-        if (context != null) {
-            ToastUtils.showToast(res);
-        }
-    }
-
-    public static void showToast(String res) {
-        showToast(ContextUtils.getContext(), res);
-    }
-
-    public static void showToast(int resId) {
-        showToast(ContextUtils.getContext(), resId);
-    }
-
-
     public static ActivityUtils getInstance() {
         if (instance == null) {
             instance = new ActivityUtils();
         }
         return instance;//instance;
-
     }
 
     static public String getSaying() {

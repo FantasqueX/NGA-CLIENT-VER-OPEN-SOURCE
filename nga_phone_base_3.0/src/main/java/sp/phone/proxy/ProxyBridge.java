@@ -3,7 +3,6 @@ package sp.phone.proxy;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.webkit.JavascriptInterface;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -16,6 +15,7 @@ import java.net.HttpURLConnection;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.Utils;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.param.HttpPostClient;
 import sp.phone.util.ActivityUtils;
@@ -25,12 +25,10 @@ import sp.phone.util.StringUtils;
 public final class ProxyBridge {
 
     Context context;
-    Toast toast;
 
-    public ProxyBridge(Context ccontext, Toast mtoast) {
+    public ProxyBridge(Context ccontext) {
         // TODO Auto-generated constructor stub
         context = ccontext;
-        toast = mtoast;
     }
 
     @JavascriptInterface
@@ -44,16 +42,7 @@ public final class ProxyBridge {
                     result = "未知错误,请重试";
                 if (result.startsWith("操作成功"))
                     result = "操作成功";
-                if (toast != null) {
-                    toast.setText(result);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.show();
-                } else {
-                    toast = Toast.makeText(context,
-                            result,
-                            Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+                ToastUtils.showToast(result);
             }
 
             @Override

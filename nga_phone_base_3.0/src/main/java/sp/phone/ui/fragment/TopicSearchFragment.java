@@ -24,6 +24,7 @@ import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.BaseActivity;
 import gov.anzong.androidnga.arouter.ARouterConstants;
 import gov.anzong.androidnga.base.util.ContextUtils;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.base.widget.DividerItemDecorationEx;
 import sp.phone.common.ApiConstants;
 import sp.phone.common.PhoneConfiguration;
@@ -177,7 +178,7 @@ public class TopicSearchFragment extends BaseFragment implements View.OnClickLis
         mPresenter.getNextTopicList().observe(this, this::setData);
 
         mPresenter.getErrorMsg().observe(this, res -> {
-            showToast(res);
+            ToastUtils.showToast(res);
             setNextPageEnabled(false);
         });
 

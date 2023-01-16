@@ -190,7 +190,7 @@ public class TopicListPresenter extends ViewModel implements LifecycleObserver {
 
             @Override
             public void onSuccess(String data) {
-                ToastUtils.show(data);
+                ToastUtils.showToast(data);
                 mRemovedTopic.setValue(info);
             }
         });
@@ -286,12 +286,12 @@ public class TopicListPresenter extends ViewModel implements LifecycleObserver {
                             + BuildConfig.APPLICATION_ID + File.separator + "cache/cache_" + dateStr + ".zip";
 
                     if (FileUtils.zipFiles(srcDir, destDir)) {
-                        ToastUtils.success("导出成功至" + destDir);
+                        ToastUtils.showToast("导出成功至" + destDir);
                     } else {
-                        ToastUtils.error("导出失败");
+                        ToastUtils.showToast("导出失败");
                     }
                 } else {
-                    ToastUtils.warn("无存储权限，无法导出！");
+                    ToastUtils.showToast("无存储权限，无法导出！");
                 }
             }
         }, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -308,10 +308,10 @@ public class TopicListPresenter extends ViewModel implements LifecycleObserver {
                         intent.setType("*/*");
                         fragment.startActivityForResult(intent, TopicCacheFragment.REQUEST_IMPORT_CACHE);
                     } catch (ActivityNotFoundException e) {
-                        ToastUtils.warn("系统不支持导入");
+                        ToastUtils.showToast("系统不支持导入");
                     }
                 } else {
-                    ToastUtils.warn("无存储权限，无法导入！");
+                    ToastUtils.showToast("无存储权限，无法导入！");
                 }
             }
         }, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -321,7 +321,7 @@ public class TopicListPresenter extends ViewModel implements LifecycleObserver {
     public void importCacheTopic(Uri uri) {
         Context context = ContextUtils.getContext();
         if (!checkCacheZipFile(context, uri)) {
-            ToastUtils.error("选择非法文件");
+            ToastUtils.showToast("选择非法文件");
             return;
         }
         ContentResolver cr = context.getContentResolver();
@@ -334,7 +334,7 @@ public class TopicListPresenter extends ViewModel implements LifecycleObserver {
             org.apache.commons.io.FileUtils.copyInputStreamToFile(is, tempZipFile);
             FileUtils.unzip(tempZipFile.getAbsolutePath(), destDir);
             loadCachePage();
-            ToastUtils.success("导入成功！！");
+            ToastUtils.showToast("导入成功！！");
         } catch (Exception e) {
             LogUtils.print(e);
         }

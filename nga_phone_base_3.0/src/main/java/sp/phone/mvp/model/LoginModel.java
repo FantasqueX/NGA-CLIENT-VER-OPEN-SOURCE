@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import gov.anzong.androidnga.base.util.ToastUtils;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -22,7 +23,6 @@ import sp.phone.http.retrofit.RetrofitService;
 import sp.phone.mvp.contract.LoginContract;
 import sp.phone.param.LoginParam;
 import sp.phone.rxjava.BaseSubscriber;
-import sp.phone.util.ActivityUtils;
 
 /**
  * Created by Justwen on 2017/6/16.
@@ -93,7 +93,7 @@ public class LoginModel extends BaseModel implements LoginContract.Model {
 //                            String error = obj.getJSONObject("error").getString("0");
 //                            callBack.onError(error);
 //                        }
-                        ActivityUtils.showToast(s);
+                        ToastUtils.showToast(s);
                         super.onNext(s);
                     }
                 });

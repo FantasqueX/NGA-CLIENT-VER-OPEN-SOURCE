@@ -40,7 +40,7 @@ public class LoginWebFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         mLoginPresenter = new LoginPresenter();
         super.onCreate(savedInstanceState);
-        ToastUtils.info("不支持QQ和微博登录");
+        ToastUtils.showToast("不支持QQ和微博登录");
     }
 
     private class LoginWebChromeClient extends WebChromeClient {

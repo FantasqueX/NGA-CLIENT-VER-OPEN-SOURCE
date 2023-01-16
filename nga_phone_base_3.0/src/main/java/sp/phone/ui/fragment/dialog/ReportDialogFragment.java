@@ -61,12 +61,12 @@ public class ReportDialogFragment extends DialogFragment {
         task.pos(query, field, new OnHttpCallBack<String>() {
             @Override
             public void onError(String text) {
-                ToastUtils.error(text);
+                ToastUtils.showToast(text);
             }
 
             @Override
             public void onSuccess(String data) {
-                ToastUtils.success(data);
+                ToastUtils.showToast(data);
             }
         });
     }

@@ -168,7 +168,7 @@ public class ImageZoomActivity extends BaseActivity {
                 startActivity(Intent.createChooser(intent, text));
             }
         } catch (ActivityNotFoundException e) {
-            ToastUtils.error("分享失败");
+            ToastUtils.showToast("分享失败");
         }
     }
 

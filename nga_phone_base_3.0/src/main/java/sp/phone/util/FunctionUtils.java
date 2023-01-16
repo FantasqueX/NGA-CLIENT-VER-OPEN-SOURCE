@@ -28,7 +28,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
@@ -87,7 +86,7 @@ public class FunctionUtils {
         if (clipboardManager != null) {
             ClipData clipData = ClipData.newPlainText(text, text);
             clipboardManager.setPrimaryClip(clipData);
-            ActivityUtils.showToast(R.string.copied_to_clipboard);
+            ToastUtils.showToast(R.string.copied_to_clipboard);
         }
     }
 
@@ -215,7 +214,7 @@ public class FunctionUtils {
     }
 
     @SuppressWarnings("unused")
-    public static void createVoteDialog(ThreadRowInfo row, final Context context, final View scrollview, Toast toast) {
+    public static void createVoteDialog(ThreadRowInfo row, final Context context, final View scrollview) {
         LayoutInflater layoutInflater = ((Activity) context).getLayoutInflater();
         final View view = layoutInflater.inflate(R.layout.dialog_vote, null);
         String name = row.getAuthor();
@@ -250,7 +249,7 @@ public class FunctionUtils {
                 .getWebSize());
         setting.setJavaScriptEnabled(true);
         setting.setJavaScriptCanOpenWindowsAutomatically(true);
-        contentTV.addJavascriptInterface(new ProxyBridge(context, toast), "ProxyBridge");
+        contentTV.addJavascriptInterface(new ProxyBridge(context), "ProxyBridge");
         contentTV.setFocusableInTouchMode(true);
         contentTV.setFocusable(true);
         contentTV.setHapticFeedbackEnabled(true);
@@ -922,7 +921,7 @@ public class FunctionUtils {
             intent.putExtra(Intent.EXTRA_TEXT, content);
             context.startActivity(Intent.createChooser(intent, title));
         } catch (ActivityNotFoundException e) {
-            ToastUtils.error("分享失败！");
+            ToastUtils.showToast("分享失败！");
         }
     }
 }

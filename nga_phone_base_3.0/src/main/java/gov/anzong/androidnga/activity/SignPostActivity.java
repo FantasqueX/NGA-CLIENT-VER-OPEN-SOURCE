@@ -19,7 +19,6 @@ import sp.phone.common.UserManagerImpl;
 import sp.phone.http.OnHttpCallBack;
 import sp.phone.param.SignPostParam;
 import sp.phone.task.SignPostTask;
-import sp.phone.util.ActivityUtils;
 import sp.phone.util.FunctionUtils;
 import sp.phone.util.StringUtils;
 
@@ -101,12 +100,12 @@ public class SignPostActivity extends BaseActivity {
             mPostTask.execute(mPostParam, new OnHttpCallBack<String>() {
                 @Override
                 public void onError(String text) {
-                    ActivityUtils.showToast(text);
+                    ToastUtils.showToast(text);
                 }
 
                 @Override
                 public void onSuccess(String data) {
-                    ActivityUtils.showToast(data);
+                    ToastUtils.showToast(data);
                     Intent intent = new Intent();
                     intent.putExtra("sign", mPostParam.getSign());
                     setResult(Activity.RESULT_OK, intent);

@@ -41,7 +41,7 @@ public class PostCommentDialogFragment extends BaseDialogFragment implements
                                 getActivity(), PostCommentDialogFragment.this)
                                 .execute(input.getText().toString());
                     } else {
-                        ToastUtils.showShortToast("贴条内容长度必须在6~650字节范围内");
+                        ToastUtils.showToast("贴条内容长度必须在6~650字节范围内");
                     }
                     try {
                         Field field = dialog.getClass().getSuperclass()
@@ -68,7 +68,7 @@ public class PostCommentDialogFragment extends BaseDialogFragment implements
 
     @Override
     public void OnPostCommentFinished(String result, boolean success) {
-        ToastUtils.showShortToast(result);
+        ToastUtils.showToast(result);
         if (getActivity() != null) {
             if (success) {
                 NLog.i("TAG", "SUCCESS");

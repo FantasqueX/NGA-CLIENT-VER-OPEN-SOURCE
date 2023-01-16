@@ -29,7 +29,7 @@ public class TopicCacheFragment extends TopicSearchFragment implements View.OnLo
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ToastUtils.success("长按可删除缓存的帖子");
+        ToastUtils.showToast("长按可删除缓存的帖子");
         mAdapter.setOnLongClickListener(this);
         mPresenter.getRemovedTopic().observe(this, this::removeTopic);
     }

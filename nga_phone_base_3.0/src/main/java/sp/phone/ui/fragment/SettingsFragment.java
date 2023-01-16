@@ -101,7 +101,7 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
                 e.printStackTrace();
             }
         });
-        ToastUtils.success("缓存清除成功");
+        ToastUtils.showToast("缓存清除成功");
     }
 
     @Override

@@ -84,9 +84,9 @@ public class MessageListFragment extends BaseFragment implements SwipeRefreshLay
             setRefreshing(false);
             hideLoadingView();
             if (TextUtils.isEmpty(s)) {
-                ToastUtils.error(R.string.error_network);
+                ToastUtils.showToast(R.string.error_network);
             } else {
-                ToastUtils.error(s);
+                ToastUtils.showToast(s);
             }
         });
         mMessageViewModel.getMessageList(1);

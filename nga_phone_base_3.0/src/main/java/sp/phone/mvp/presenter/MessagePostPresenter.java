@@ -1,6 +1,7 @@
 package sp.phone.mvp.presenter;
 
 import gov.anzong.androidnga.R;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.mvp.contract.MessagePostContract;
 import sp.phone.mvp.model.MessagePostModel;
 import sp.phone.param.MessagePostParam;
@@ -24,7 +25,7 @@ public class MessagePostPresenter extends BasePresenter<MessagePostFragment, Mes
     public void commit(String title, String to, String body) {
         synchronized (COMMIT_LOCK) {
             if (mLoading) {
-                mBaseView.showToast(R.string.avoidWindfury);
+                ToastUtils.showToast(R.string.avoidWindfury);
                 return;
             }
             mLoading = true;
@@ -51,7 +52,7 @@ public class MessagePostPresenter extends BasePresenter<MessagePostFragment, Mes
     @Override
     public void onMessagePostFinished(boolean result, String resultInfo) {
         if (resultInfo != null && mBaseView != null) {
-            mBaseView.showToast(resultInfo);
+            ToastUtils.showToast(resultInfo);
         }
         ActivityUtils.getInstance().dismiss();
         if (result && mBaseView != null) {

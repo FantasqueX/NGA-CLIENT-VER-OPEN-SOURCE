@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.BaseActivity;
 import gov.anzong.androidnga.arouter.ARouterConstants;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import io.reactivex.annotations.NonNull;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.User;
@@ -87,7 +88,7 @@ public class ArticleListFragment extends BaseMvpFragment<ArticleListPresenter> i
             switch (item.getItemId()) {
                 case R.id.menu_edit:
                     if (FunctionUtils.isComment(row)) {
-                        showToast(R.string.cannot_eidt_comment);
+                        ToastUtils.showToast(R.string.cannot_eidt_comment);
                         break;
                     } else {
                         ARouter.getInstance()
@@ -108,14 +109,14 @@ public class ArticleListFragment extends BaseMvpFragment<ArticleListPresenter> i
                     break;
                 case R.id.menu_signature:
                     if (row.getISANONYMOUS()) {
-                        ActivityUtils.showToast("这白痴匿名了,神马都看不到");
+                        ToastUtils.showToast("这白痴匿名了,神马都看不到");
                     } else {
                         FunctionUtils.Create_Signature_Dialog(row, getActivity(),
                                 mListView);
                     }
                     break;
                 case R.id.menu_vote:
-                    FunctionUtils.createVoteDialog(row, getActivity(), mListView, mToast);
+                    FunctionUtils.createVoteDialog(row, getActivity(), mListView);
                     break;
                 case R.id.menu_ban_this_one:
                     mPresenter.banThisSB(row);

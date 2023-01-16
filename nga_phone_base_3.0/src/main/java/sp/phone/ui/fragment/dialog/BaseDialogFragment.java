@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
-import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.util.NLog;
 
 /**
@@ -19,13 +18,6 @@ import sp.phone.util.NLog;
  */
 
 public abstract class BaseDialogFragment extends AppCompatDialogFragment implements View.OnClickListener {
-
-    public void showToast(String toast) {
-        if (getContext() != null) {
-            ToastUtils.showToast(toast);
-        }
-    }
-
     public void show(FragmentManager fm) {
         show(fm, getClass().getSimpleName());
     }

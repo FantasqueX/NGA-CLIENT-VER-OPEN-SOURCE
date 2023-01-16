@@ -47,7 +47,7 @@ public class ArticleListPresenter extends BasePresenter<ArticleListFragment, Art
             if (mBaseView != null) {
                 mBaseView.hideLoadingView();
                 mBaseView.setRefreshing(false);
-                mBaseView.showToast(text);
+                ToastUtils.showToast(text);
             }
         }
 
@@ -148,17 +148,17 @@ public class ArticleListPresenter extends BasePresenter<ArticleListFragment, Art
     @Override
     public void banThisSB(ThreadRowInfo row) {
         if (row.getISANONYMOUS()) {
-            mBaseView.showToast(R.string.cannot_add_to_blacklist_cause_anony);
+            ToastUtils.showToast(R.string.cannot_add_to_blacklist_cause_anony);
         } else {
             UserManager um = UserManagerImpl.getInstance();
             if (row.get_isInBlackList()) {
                 row.set_IsInBlackList(false);
                 um.removeFromBlackList(String.valueOf(row.getAuthorid()));
-                mBaseView.showToast(R.string.remove_from_blacklist_success);
+                ToastUtils.showToast(R.string.remove_from_blacklist_success);
             } else {
                 row.set_IsInBlackList(true);
                 um.addToBlackList(row.getAuthor(), String.valueOf(row.getAuthorid()));
-                mBaseView.showToast(R.string.add_to_blacklist_success);
+                ToastUtils.showToast(R.string.add_to_blacklist_success);
             }
         }
     }
@@ -221,7 +221,7 @@ public class ArticleListPresenter extends BasePresenter<ArticleListFragment, Art
         if (mLikeTask == null) {
             mLikeTask = new LikeTask();
         }
-        mLikeTask.execute(tid, pid, LikeTask.SUPPORT, ToastUtils::success);
+        mLikeTask.execute(tid, pid, LikeTask.SUPPORT, ToastUtils::showToast);
     }
 
     @Override
@@ -229,7 +229,7 @@ public class ArticleListPresenter extends BasePresenter<ArticleListFragment, Art
         if (mLikeTask == null) {
             mLikeTask = new LikeTask();
         }
-        mLikeTask.execute(tid, pid, LikeTask.OPPOSE, ToastUtils::success);
+        mLikeTask.execute(tid, pid, LikeTask.OPPOSE, ToastUtils::showToast);
     }
 
     @Override

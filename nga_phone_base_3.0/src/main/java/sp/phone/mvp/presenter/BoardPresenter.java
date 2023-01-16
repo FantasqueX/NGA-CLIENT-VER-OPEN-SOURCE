@@ -182,7 +182,7 @@ public class BoardPresenter extends BasePresenter<NavigationDrawerFragment, Boar
         } else {
             mBaseModel.addBookmark(fid, stid, name);
             mBaseView.notifyDataSetChanged();
-            ToastUtils.success("添加成功");
+            ToastUtils.showToast("添加成功");
         }
     }
 

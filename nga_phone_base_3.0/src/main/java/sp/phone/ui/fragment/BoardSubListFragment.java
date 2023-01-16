@@ -16,6 +16,7 @@ import java.util.List;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.arouter.ARouterConstants;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.http.OnHttpCallBack;
 import sp.phone.mvp.model.entity.SubBoard;
 import sp.phone.param.ParamKey;
@@ -64,13 +65,13 @@ public class BoardSubListFragment extends BaseRxFragment implements View.OnClick
             OnHttpCallBack<String> callBack = new OnHttpCallBack<String>() {
                 @Override
                 public void onError(String text) {
-                    showToast(text);
+                    ToastUtils.showToast(text);
                     ((Checkable) v).setChecked(board.isChecked());
                 }
 
                 @Override
                 public void onSuccess(String data) {
-                    showToast(data);
+                    ToastUtils.showToast(data);
                     board.setChecked(v.isClickable());
                     setResult(Activity.RESULT_OK);
                 }

@@ -3,6 +3,7 @@ package sp.phone.mvp.presenter;
 import android.text.TextUtils;
 
 import gov.anzong.androidnga.R;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.http.OnHttpCallBack;
 import sp.phone.http.bean.MessageDetailInfo;
 import sp.phone.mvp.contract.MessageDetailContract;
@@ -25,9 +26,9 @@ public class MessageDetailPresenter extends BasePresenter<MessageDetailFragment,
             mBaseView.setRefreshing(false);
             mBaseView.hideLoadingView();
             if (TextUtils.isEmpty(text)) {
-                mBaseView.showToast(R.string.error_network);
+                ToastUtils.showToast(R.string.error_network);
             } else {
-                mBaseView.showToast(text);
+                ToastUtils.showToast(text);
             }
         }
 

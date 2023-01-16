@@ -2,7 +2,6 @@ package sp.phone.ui.fragment;
 
 import android.content.Context;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -13,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.BaseActivity;
-import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.util.ActivityUtils;
 
@@ -25,8 +23,6 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     protected BaseActivity mActivity;
 
-    protected Toast mToast;
-
     protected PhoneConfiguration mConfig = PhoneConfiguration.getInstance();
 
     private int mTitleId;
@@ -34,17 +30,6 @@ public abstract class BaseFragment extends Fragment {
     private CharSequence mTitleStr;
 
     private ViewModelProvider mActivityViewModelProvider;
-
-    @Deprecated
-    public void showToast(int res) {
-        String str = getString(res);
-        showToast(str);
-    }
-
-    @Deprecated
-    public void showToast(String res) {
-        ToastUtils.info(res);
-    }
 
     public void finish() {
         if (mActivity != null) {

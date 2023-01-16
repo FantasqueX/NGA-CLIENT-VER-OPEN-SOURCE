@@ -118,7 +118,7 @@ public class ArticleListModel extends BaseModel implements ArticleListContract.M
     public void cachePage(ArticleListParam param, String rawData) {
 
         if (TextUtils.isEmpty(param.topicInfo)) {
-            ToastUtils.error("缓存失败！");
+            ToastUtils.showToast("缓存失败！");
             return;
         }
         ThreadUtils.postOnSubThread(() -> {
@@ -128,9 +128,9 @@ public class ArticleListModel extends BaseModel implements ArticleListContract.M
                 FileUtils.write(describeFile, param.topicInfo);
                 File rawDataFile = new File(path, param.page + ".json");
                 FileUtils.write(rawDataFile, rawData);
-                ToastUtils.success("缓存成功！");
+                ToastUtils.showToast("缓存成功！");
             } catch (IOException e) {
-                ToastUtils.error("缓存失败！");
+                ToastUtils.showToast("缓存失败！");
                 e.printStackTrace();
             }
         });

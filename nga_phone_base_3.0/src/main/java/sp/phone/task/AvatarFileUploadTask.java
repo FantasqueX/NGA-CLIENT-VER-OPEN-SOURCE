@@ -82,7 +82,7 @@ public class AvatarFileUploadTask extends AsyncTask<String, Integer, String> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         if (values[0] == -101) {
-            ToastUtils.info(R.string.image_to_big2);
+            ToastUtils.showToast(R.string.image_to_big2);
         } else {
             if (values[0] < 0 || values[0] > 100) {
                 values[0] = 99;
@@ -94,11 +94,11 @@ public class AvatarFileUploadTask extends AsyncTask<String, Integer, String> {
     @Override
     protected void onPostExecute(String result) {
         if (StringUtils.isEmpty(result)) {
-            ToastUtils.error(errorStr);
+            ToastUtils.showToast(errorStr);
         } else {
             NonameUploadResponse response = JSON.parseObject(result, NonameUploadResponse.class);
             if (response.error) {
-                ToastUtils.error(response.errorinfo);
+                ToastUtils.showToast(response.errorinfo);
             } else {
                 notifier.finishUpload(response.data, uri);
             }

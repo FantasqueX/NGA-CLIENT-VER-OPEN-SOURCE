@@ -23,7 +23,7 @@ public class BookmarkTask {
                     public void onNext(String result) {
                         String msg = StringUtils.getStringBetween(result, 0, "{\"0\":\"", "\"},\"time\"").result;
                         if (!StringUtils.isEmpty(msg)) {
-                            ToastUtils.showShortToast(msg.trim());
+                            ToastUtils.showToast(msg.trim());
                         }
                     }
                 });
@@ -40,7 +40,7 @@ public class BookmarkTask {
                     public void onNext(String result) {
                         String msg = StringUtils.getStringBetween(result, 0, "{\"0\":\"", "\"},\"time\"").result;
                         if (!StringUtils.isEmpty(msg)) {
-                            ToastUtils.showShortToast(msg.trim());
+                            ToastUtils.showToast(msg.trim());
                         }
                     }
                 });

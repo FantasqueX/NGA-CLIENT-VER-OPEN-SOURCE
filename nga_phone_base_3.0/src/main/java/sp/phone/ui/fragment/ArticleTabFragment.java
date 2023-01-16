@@ -31,6 +31,7 @@ import butterknife.OnClick;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.activity.WebViewActivity;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.base.widget.TabLayoutEx;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.UserManagerImpl;
@@ -229,7 +230,7 @@ public class ArticleTabFragment extends BaseRxFragment {
         if (clipboardManager != null) {
             ClipData clipData = ClipData.newPlainText("text", getCurrentUrl());
             clipboardManager.setPrimaryClip(clipData);
-            showToast("已经复制至粘贴板");
+            ToastUtils.showToast("已经复制至粘贴板");
         }
     }
 
