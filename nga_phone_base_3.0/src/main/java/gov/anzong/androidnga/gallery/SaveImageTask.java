@@ -14,10 +14,10 @@ import org.reactivestreams.Subscription;
 import java.io.File;
 
 import gov.anzong.androidnga.R;
+import gov.anzong.androidnga.base.util.ContextUtils;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import gov.anzong.androidnga.base.util.ContextUtils;;
 import sp.phone.http.OnSimpleHttpCallBack;
 import sp.phone.rxjava.BaseSubscriber;
 import sp.phone.util.ActivityUtils;
@@ -28,7 +28,7 @@ public class SaveImageTask {
 
     private int mDownloadCount;
 
-    private static final String PATH_IMAGES = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)+ "/nga_open_source/";
+    private static final String PATH_IMAGES = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/nga_open_source/";
 
     private Subscription mSubscription;
 

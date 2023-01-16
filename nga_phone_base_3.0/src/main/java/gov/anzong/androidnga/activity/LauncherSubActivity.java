@@ -1,9 +1,10 @@
 package gov.anzong.androidnga.activity;
 
-import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.Fragment;
 
 import sp.phone.ui.fragment.BaseFragment;
 
