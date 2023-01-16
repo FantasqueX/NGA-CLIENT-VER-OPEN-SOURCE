@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
-import gov.anzong.androidnga.util.ToastUtils;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.util.NLog;
 
 /**

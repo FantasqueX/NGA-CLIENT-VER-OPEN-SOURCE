@@ -56,7 +56,7 @@ public class NgaClientApp extends Application {
             if (dirs != null) {
                 for (File dir : dirs) {
                     if (dir.getName().contains("webview")) {
-                        if (!dir.getName().contains("webview_" + ppid)){
+                        if (!dir.getName().contains("webview_" + ppid)) {
                             ThreadUtils.postOnSubThread(() -> {
                                 try {
                                     FileUtils.deleteDirectory(dir);

@@ -28,7 +28,7 @@ import java.net.HttpURLConnection;
 import java.util.HashSet;
 
 import gov.anzong.androidnga.R;
-import gov.anzong.androidnga.util.ToastUtils;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.UserManagerImpl;
 import sp.phone.param.AvatarPostAction;

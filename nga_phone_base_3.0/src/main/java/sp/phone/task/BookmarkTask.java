@@ -1,7 +1,7 @@
 package sp.phone.task;
 
 import gov.anzong.androidnga.Utils;
-import gov.anzong.androidnga.util.ToastUtils;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import sp.phone.http.retrofit.RetrofitHelper;

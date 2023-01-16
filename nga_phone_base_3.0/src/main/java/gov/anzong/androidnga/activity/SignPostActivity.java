@@ -14,7 +14,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.ActionBar;
 
 import gov.anzong.androidnga.R;
-import gov.anzong.androidnga.util.ToastUtils;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.common.UserManagerImpl;
 import sp.phone.http.OnHttpCallBack;
 import sp.phone.param.SignPostParam;
