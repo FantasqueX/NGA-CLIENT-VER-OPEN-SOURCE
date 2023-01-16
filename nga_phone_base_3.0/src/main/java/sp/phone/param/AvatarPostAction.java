@@ -21,7 +21,6 @@ public class AvatarPostAction {
     }
 
     public void set__ngaClientChecksum(String getngaClientChecksum) {
-        // TODO Auto-generated method stub
         __ngaClientChecksum = getngaClientChecksum;
     }
 

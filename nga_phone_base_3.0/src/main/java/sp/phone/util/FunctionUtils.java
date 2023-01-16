@@ -117,25 +117,19 @@ public class FunctionUtils {
         builder.setMessage("这白痴是系统账号,神马都看不到");
         builder.setTitle("看不到");
         builder.setPositiveButton("关闭", new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
                 dialog.dismiss();
             }
-
         });
 
         final AlertDialog dialog = builder.create();
         dialog.show();
         dialog.setOnDismissListener(new AlertDialog.OnDismissListener() {
-
             @Override
             public void onDismiss(DialogInterface arg0) {
-                // TODO Auto-generated method stub
                 dialog.dismiss();
             }
-
         });
     }
 

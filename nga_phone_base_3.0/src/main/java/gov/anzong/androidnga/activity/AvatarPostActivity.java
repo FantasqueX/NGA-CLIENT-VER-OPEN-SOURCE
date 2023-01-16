@@ -134,18 +134,15 @@ public class AvatarPostActivity extends BaseActivity implements
 
             @Override
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intent, REQUEST_CODE_SELECT_PIC);
             }
-
         });
         submit_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
                 if (commitListener == null) {
                     commitListener = new ButtonCommitListener(REPLY_URL);
                 }

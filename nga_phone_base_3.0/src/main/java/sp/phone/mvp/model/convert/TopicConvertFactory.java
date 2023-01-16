@@ -135,6 +135,7 @@ public class TopicConvertFactory {
                 return;
             }
             Map<String, Map<String, String>> subBoardMap = JSON.parseObject(subForumsStr, Map.class);
+            // TODO 2023/1/17 Navigate to My Cache and refresh, subBoardMap will be NULL
             for (String key : subBoardMap.keySet()) {
                 Map<String, String> boardMap = subBoardMap.get(key);
                 SubBoard board = new SubBoard();

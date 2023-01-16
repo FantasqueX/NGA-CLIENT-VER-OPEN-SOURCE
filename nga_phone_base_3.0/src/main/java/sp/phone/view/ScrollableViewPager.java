@@ -35,7 +35,6 @@ public class ScrollableViewPager extends ViewPager {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent arg0) {
-        // TODO Auto-generated method stub
         return mEnableScroll && super.onInterceptTouchEvent(arg0);
 
     }

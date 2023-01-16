@@ -138,7 +138,6 @@ public class PostCommentTask extends AsyncTask<String, Integer, String> {
 
     @Override
     protected void onPreExecute() {
-        // TODO Auto-generated method stub
         super.onPreExecute();
     }
 
@@ -153,7 +152,6 @@ public class PostCommentTask extends AsyncTask<String, Integer, String> {
 
     @Override
     protected void onCancelled() {
-        // TODO Auto-generated method stub
         super.onCancelled();
     }
 

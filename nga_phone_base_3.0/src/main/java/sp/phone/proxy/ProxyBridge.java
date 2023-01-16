@@ -27,7 +27,6 @@ public final class ProxyBridge {
     Context context;
 
     public ProxyBridge(Context ccontext) {
-        // TODO Auto-generated constructor stub
         context = ccontext;
     }
 
