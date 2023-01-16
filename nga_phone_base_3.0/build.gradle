@@ -113,7 +113,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'com.squareup.retrofit2:retrofit-converters:2.3.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
@@ -122,7 +122,8 @@ dependencies {
 
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
-    implementation 'com.alibaba:arouter-api:1.2.4'
+    implementation 'com.alibaba:arouter-api:1.5.2'
+    implementation "com.alibaba:fastjson:$project.fastJson"
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     implementation 'com.github.markzhai:blockcanary-no-op:1.5.0'

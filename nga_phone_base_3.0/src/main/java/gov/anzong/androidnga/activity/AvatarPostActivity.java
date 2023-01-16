@@ -409,7 +409,5 @@ public class AvatarPostActivity extends BaseActivity implements
             }
             super.onPostExecute(result);
         }
-
     }
-
 }

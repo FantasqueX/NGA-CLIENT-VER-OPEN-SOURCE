@@ -35,7 +35,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation "com.google.android.material:material:$androidxMaterial"
-    api "androidx.appcompat:appcompat:$androidxAppcompat"
+    implementation "androidx.appcompat:appcompat:$androidxAppcompat"
 
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
@@ -49,8 +49,8 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    api "com.alibaba:fastjson:$project.fastJson"
-    api "io.reactivex.rxjava2:rxandroid:$project.rxAndroid"
+    implementation "com.alibaba:fastjson:$project.fastJson"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroid"
 
     implementation 'commons-io:commons-io:2.11.0'
 
