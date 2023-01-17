@@ -16,11 +16,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.LauncherSubActivity;
 import gov.anzong.androidnga.arouter.ARouterConstants;
@@ -38,8 +37,8 @@ public class TopicListFragment extends TopicSearchFragment {
 
     private Menu mOptionMenu;
 
-    @BindView(R.id.fab_menu)
-    public FloatingActionsMenu mFam;
+    @BindView(R.id.fab_post)
+    public FloatingActionButton mFab;
 
     @BindView(R.id.appbar)
     public AppBarLayout mAppBarLayout;
@@ -73,14 +72,21 @@ public class TopicListFragment extends TopicSearchFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         updateFloatingMenu();
+        this.mFab.setOnClickListener(view1 -> {
+            ARouter.getInstance()
+                   .build(ARouterConstants.ACTIVITY_POST)
+                   .withInt(ParamKey.KEY_FID, mRequestParam.fid)
+                   .withString(ParamKey.KEY_STID, mRequestParam.stid != 0 ? String.valueOf(mRequestParam.stid) : null)
+                   .withString(ParamKey.KEY_ACTION, "new")
+                   .navigation();
+        });
     }
 
     private void updateFloatingMenu() {
         if (mConfig.isLeftHandMode()) {
-            CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) mFam.getLayoutParams();
-            lp.gravity = Gravity.START | Gravity.BOTTOM;
-            mFam.setExpandDirection(FloatingActionsMenu.EXPAND_UP, FloatingActionsMenu.LABELS_ON_RIGHT_SIDE);
-            mFam.setLayoutParams(lp);
+            CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) this.mFab.getLayoutParams();
+            layoutParams.gravity = Gravity.START | Gravity.BOTTOM;
+            this.mFab.setLayoutParams(layoutParams);
         }
     }
 
@@ -97,28 +103,6 @@ public class TopicListFragment extends TopicSearchFragment {
             mAppBarLayout.setExpanded(true, true);
         }
         super.scrollTo(position);
-    }
-
-    @Override
-    public void onResume() {
-        mFam.collapse();
-        super.onResume();
-    }
-
-    @OnClick(R.id.fab_refresh)
-    public void refresh() {
-        mFam.collapse();
-        mPresenter.loadPage(1, mRequestParam);
-    }
-
-    @OnClick(R.id.fab_post)
-    public void startPostActivity() {
-        ARouter.getInstance()
-                .build(ARouterConstants.ACTIVITY_POST)
-                .withInt(ParamKey.KEY_FID, mRequestParam.fid)
-                .withString(ParamKey.KEY_STID, mRequestParam.stid != 0 ? String.valueOf(mRequestParam.stid) : null)
-                .withString(ParamKey.KEY_ACTION, "new")
-                .navigation();
     }
 
     @Override

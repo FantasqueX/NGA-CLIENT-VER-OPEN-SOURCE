@@ -89,13 +89,7 @@ android {
     }
 }
 
-repositories {
-    flatDir { dirs 'libs' }
-}
-
 dependencies {
-    implementation(name: 'floatingactionmenu', ext: 'aar')
-
     implementation "com.google.android.material:material:$androidxMaterial"
 
     implementation 'commons-io:commons-io:2.11.0'
@@ -140,4 +134,7 @@ dependencies {
 
     //noinspection KtxExtensionAvailable
     implementation "androidx.preference:preference:$preference_version"
+
+    // material 1.1.0 requires API >= 31
+    implementation 'androidx.compose.material:material:1.0.5'
 }

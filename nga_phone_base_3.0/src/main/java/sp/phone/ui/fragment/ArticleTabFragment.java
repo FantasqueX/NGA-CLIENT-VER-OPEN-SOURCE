@@ -22,12 +22,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.activity.WebViewActivity;
@@ -47,7 +46,6 @@ import sp.phone.ui.fragment.dialog.GotoDialogFragment;
 import sp.phone.util.ActivityUtils;
 import sp.phone.util.FunctionUtils;
 import sp.phone.util.StringUtils;
-import sp.phone.view.behavior.ScrollAwareFamBehavior;
 
 /**
  * 帖子详情Fragment
@@ -68,12 +66,10 @@ public class ArticleTabFragment extends BaseRxFragment {
 
     private static final String GOTO_TAG = "goto";
 
-    @BindView(R.id.fab_menu)
-    public FloatingActionsMenu mFam;
+    @BindView(R.id.fab_post)
+    public FloatingActionButton mFab;
 
     private int mReplyCount;
-
-    private ScrollAwareFamBehavior mBehavior;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,7 +94,6 @@ public class ArticleTabFragment extends BaseRxFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         if (mConfig.isShowBottomTab()) {
             return inflater.inflate(R.layout.fragment_article_tab_bottom, container, false);
         } else {
@@ -112,65 +107,41 @@ public class ArticleTabFragment extends BaseRxFragment {
         updateFloatingMenu();
         mPagerAdapter = new ArticlePagerAdapter(getChildFragmentManager(), mRequestParam);
         mViewPager.setAdapter(mPagerAdapter);
-        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                mBehavior.animateIn(mFam);
-                super.onPageSelected(position);
-            }
-        });
 
         mTabLayout.setTabOnScreenLimit(1);
         mTabLayout.setUpWithViewPager(mViewPager);
 
-        mFam.getAddFloatingActionButton().setOnLongClickListener(v -> {
-            mBehavior.animateOut(mFam);
-            return true;
-        });
         super.onViewCreated(view, savedInstanceState);
+
+        this.mFab.setOnClickListener(view1 -> {
+            Intent intent = new Intent();
+            String tid = String.valueOf(mRequestParam.tid);
+            intent.putExtra("prefix", "");
+            intent.putExtra("tid", tid);
+            intent.putExtra("action", "reply");
+            if (!StringUtils.isEmpty(UserManagerImpl.getInstance().getUserName())) {// 登入了才能发
+                intent.setClass(getContext(),
+                        PhoneConfiguration.getInstance().postActivityClass);
+            } else {
+                intent.setClass(getContext(),
+                        PhoneConfiguration.getInstance().loginActivityClass);
+            }
+            getActivity().startActivityForResult(intent, ActivityUtils.REQUEST_CODE_TOPIC_POST);
+        });
     }
 
     private void updateFloatingMenu() {
-        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) mFam.getLayoutParams();
-        mBehavior = (ScrollAwareFamBehavior) lp.getBehavior();
         if (mConfig.isLeftHandMode()) {
-            lp.gravity = Gravity.START | Gravity.BOTTOM;
-            mFam.setExpandDirection(FloatingActionsMenu.EXPAND_UP, FloatingActionsMenu.LABELS_ON_RIGHT_SIDE);
-            mFam.setLayoutParams(lp);
+            CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) this.mFab.getLayoutParams();
+            layoutParams.gravity = Gravity.START | Gravity.BOTTOM;
+            this.mFab.setLayoutParams(layoutParams);
         }
     }
 
     @Override
     public void onResume() {
-        if (mFam != null) {
-            mFam.collapse();
-        }
         registerRxBus(FragmentEvent.PAUSE);
         super.onResume();
-    }
-
-    @OnClick(R.id.fab_post)
-    public void reply() {
-        Intent intent = new Intent();
-        String tid = String.valueOf(mRequestParam.tid);
-        intent.putExtra("prefix", "");
-        intent.putExtra("tid", tid);
-        intent.putExtra("action", "reply");
-        if (!StringUtils.isEmpty(UserManagerImpl.getInstance().getUserName())) {// 登入了才能发
-            intent.setClass(getContext(),
-                    PhoneConfiguration.getInstance().postActivityClass);
-        } else {
-            intent.setClass(getContext(),
-                    PhoneConfiguration.getInstance().loginActivityClass);
-        }
-        getActivity().startActivityForResult(intent, ActivityUtils.REQUEST_CODE_TOPIC_POST);
-    }
-
-    @OnClick(R.id.fab_refresh)
-    public void refresh() {
-        getActivityViewModel().setRefreshPage(mViewPager.getCurrentItem() + 1);
-        mRequestParam.page = mViewPager.getCurrentItem() + 1;
-        mFam.collapse();
     }
 
     @Override
@@ -311,7 +282,5 @@ public class ArticleTabFragment extends BaseRxFragment {
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
-
     }
-
 }

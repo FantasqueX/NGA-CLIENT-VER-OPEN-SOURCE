@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,31 +39,14 @@
 
     </FrameLayout>
 
-
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/fab_menu"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        app:layout_behavior="sp.phone.view.behavior.ScrollAwareFamBehavior">
-
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_post"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_title="@string/reply_thread"
-            app:srcCompat="@drawable/btn_ic_create"
-            tools:ignore="VectorDrawableCompat" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_title="刷新"
-            app:srcCompat="@drawable/btn_ic_refresh"
-            tools:ignore="VectorDrawableCompat" />
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        android:layout_margin="16dp"
+        android:contentDescription="@string/reply_thread"
+        android:src="@drawable/btn_ic_add"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

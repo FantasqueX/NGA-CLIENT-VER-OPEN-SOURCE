@@ -1,7 +1,6 @@
 package gov.anzong.androidnga.activity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
@@ -55,7 +54,8 @@ public class ArticleCacheActivity extends BaseActivity {
         mPagerAdapter = new ArticlePagerAdapter(getSupportFragmentManager(), mRequestParam);
         mPagerAdapter.setPageIndexList(mCachePageList);
 
-        findViewById(R.id.fab_menu).setVisibility(View.GONE);
+        // TODO Always fail to read cache
+//        findViewById(R.id.fab_menu).setVisibility(View.GONE);
         ViewPager viewPager = findViewById(R.id.pager);
         viewPager.setAdapter(mPagerAdapter);
 
