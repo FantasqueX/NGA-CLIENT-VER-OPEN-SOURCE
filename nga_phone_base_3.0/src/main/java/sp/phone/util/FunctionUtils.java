@@ -90,7 +90,6 @@ public class FunctionUtils {
         }
     }
 
-    @SuppressWarnings("static-access")
     public static void handleContentTV(final WebView contentTV, final MessageArticlePageInfo row, int bgColor, int fgColor, Context context) {
         final WebViewClient client = new WebViewClientEx((FragmentActivity) context);
         contentTV.setBackgroundColor(0);

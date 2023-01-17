@@ -18,7 +18,6 @@ public class ArticleUtil {
     private final static String TAG = ArticleUtil.class.getSimpleName();
     private Context context;
 
-    @SuppressWarnings("static-access")
     public ArticleUtil(Context context) {
         super();
         this.context = context;
