@@ -5,7 +5,7 @@ import android.util.Log;
 import java.util.HashMap;
 import java.util.Map;
 
-import gov.anzong.androidnga.common.BuildConfig;
+import gov.anzong.androidnga.BuildConfig;
 
 /**
  * 带开关的Log
