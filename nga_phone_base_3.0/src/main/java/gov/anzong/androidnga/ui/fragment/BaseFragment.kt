@@ -1,5 +1,6 @@
 package gov.anzong.androidnga.ui.fragment
 
+import androidx.annotation.ContentView
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ open class BaseFragment : Fragment {
 
     private val mActivityViewModelProvider: ViewModelProvider by lazy { ViewModelProvider(activity as FragmentActivity) }
 
+    @ContentView
     constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
     constructor() : super()

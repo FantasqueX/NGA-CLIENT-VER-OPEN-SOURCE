@@ -3,48 +3,19 @@ plugins {
     id 'kotlin-android'
 }
 
-def static getDate() {
-    def date = new Date()
-    def formattedDate = date.format('yyyyMMddHHmm')
-    return formattedDate
-
-}
-
-def isJenkins() {
-    return project.hasProperty('IS_JENKINS') && IS_JENKINS == 'true'
-}
-
 android {
-    compileSdkVersion project.compileSdkVersion
-
-    signingConfigs {
-        signingConfig {
-            if (isJenkins()) {
-                storeFile file('../../android19910914.keystore')
-            } else {
-                storeFile file('..\\keystore\\android19910914.keystore')
-            }
-            storePassword '19910914'
-            keyAlias 'android.keystore'
-            keyPassword '19910914'
-        }
-    }
-    packagingOptions {
-        resources {
-            excludes += ['META-INF/LICENSE.txt', 'META-INF/NOTICE.txt', 'META-INF/MANIFEST.MF']
-        }
-    }
-
+    namespace 'gov.anzong.androidnga'
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "gov.anzong.androidnga"
-        minSdkVersion project.minSdkVersion
-        targetSdkVersion project.targetSdkVersion
-        multiDexEnabled true
-        resConfigs 'zh', 'en'
+        minSdkVersion 24
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 30
+        resourceConfigurations += ["zh", "en"]
 
-        versionCode project.appVersionCode
-        versionName project.appVersionName
+        versionCode 30841
+        versionName '3.8.4.1'
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -52,96 +23,83 @@ android {
             }
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
     buildTypes {
         release {
-            debuggable false
-            jniDebuggable false
-            renderscriptDebuggable false
-            pseudoLocalesEnabled false
-            minifyEnabled false
-            zipAlignEnabled true
-            signingConfig signingConfigs.signingConfig
+            minifyEnabled true
         }
         debug {
+            applicationIdSuffix ".debug"
             debuggable true
-            minifyEnabled false
-        }
-    }
-
-    lint {
-        abortOnError false
-        disable 'MissingTranslation'
-    }
-    namespace 'gov.anzong.androidnga'
-
-
-    android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            if (outputFile != null && outputFileName.endsWith('.apk') && variant.buildType.name == "release") {
-                outputFileName = "nga_phone_${defaultConfig.versionName}_${getDate()}.apk"
-            }
         }
     }
 }
 
-dependencies {
-    implementation "com.google.android.material:material:$androidxMaterial"
+ext {
+    arouterVersion = '1.1.1'
+    roomVersion = '2.3.0'
+    glideVersion = '4.14.2'
+    retrofitVersion = '2.9.0'
+}
 
+dependencies {
+    //common dependencies
     implementation 'commons-io:commons-io:2.11.0'
     implementation 'com.google.guava:guava:31.1-android'
-
-    // lifecycle
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
 
     //butterKnife
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
     //glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //rxjava
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'com.squareup.retrofit2:retrofit-converters:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
-    implementation 'com.alibaba:arouter-api:1.5.2'
-    implementation "com.alibaba:fastjson:$project.fastJson"
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     implementation 'com.github.daniel-stoneuk:material-about-library:2.3.0'
+    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
+    implementation 'net.steamcrafted:load-toast:1.0.12'
+    implementation 'com.zhouyou:signseekbar:1.0.6'
+    implementation 'com.nshmura:recyclertablayout:1.5.0'
 
-    // database
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
-
-    // kotlin
-    implementation "androidx.core:core-ktx:1.6.0"
-
-    //noinspection KtxExtensionAvailable
-    implementation "androidx.preference:preference:$preference_version"
+    implementation 'com.alibaba:fastjson:1.2.83'
+    implementation "com.alibaba:arouter-api:$arouterVersion"
+    annotationProcessor "com.alibaba:arouter-compiler:$arouterVersion"
 
     // material 1.1.0 requires API >= 31
     implementation 'androidx.compose.material:material:1.0.5'
 
-    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
-    implementation 'net.steamcrafted:load-toast:1.0.12'
-    api('com.zhouyou:signseekbar:1.0.6') {
-        exclude group: 'com.android.support'
-    }
-    api('com.nshmura:recyclertablayout:1.5.0') {
-        exclude group: 'com.android.support'
-    }
+    implementation 'com.google.android.material:material:1.4.0'
+
+    // database
+    implementation "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+
+    // Remove this after upgrading compose
+    implementation 'androidx.preference:preference:1.1.1'
+
+    // kotlin
+    implementation "androidx.core:core-ktx:1.6.0"
 }

@@ -34,8 +34,6 @@ import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.util.GlideApp;
 import sp.phone.common.PhoneConfiguration;
 
-;
-
 public class ImageUtils {
     static final String LOG_TAG = ImageUtils.class.getSimpleName();
     //final static int max_avatar_width = 200;
