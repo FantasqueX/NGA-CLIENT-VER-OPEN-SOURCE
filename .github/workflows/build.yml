@@ -29,6 +29,6 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
-        name: Artifacts
+        name: nga_phone_base_3.0-debug.apk
         path: nga_phone_base_3.0/build/outputs/apk/debug/nga_phone_base_3.0-debug.apk
         if-no-files-found: error
